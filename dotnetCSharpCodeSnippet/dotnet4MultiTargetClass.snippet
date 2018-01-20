@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>dotnet4MultiTargetClass</Title>
+      <Author>[USERNAME]</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>dotnet4MultiTargetClass</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="csharp" Delimiter="$"><![CDATA[    public class SayHello
+    {
+        public string Hello()
+        {
+#if NET40
+            return "Hi NET40";
+#elif NET45
+            return "Hi NET45";
+#elif NETCOREAPP1_0
+            return "Hi NETCOREAPP1_0";
+#elif NETCOREAPP2_0
+            return "Hi NETCOREAPP2_0";
+#elif NETSTANDARD2_0
+            return "Hi NETSTANDARD2_0";
+#endif
+        }
+    }
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

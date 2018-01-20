@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    
+    <Company>Contoso Inc.</Company>
+    <Authors>Vulcan Lee</Authors>
+    <Version>1.1.0</Version>
+    <Description>展示如何建立、發佈、原始碼除錯 NuGet 套件的練習範例專案</Description>
+
+    <PackageProjectUrl>https://github.com/vulcanlee/DotnetCoreContosoPack</PackageProjectUrl>
+    
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/vulcanlee/DotnetCoreContosoPack.git</RepositoryUrl>
+    
+    <IncludeSymbols>true</IncludeSymbols>
+    <IncludeSource>true</IncludeSource>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SourceLink.Create.CommandLine" Version="2.6.0" PrivateAssets="All" />
+  </ItemGroup>
+</Project>

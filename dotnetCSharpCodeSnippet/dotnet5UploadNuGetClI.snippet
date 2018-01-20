@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>dotnet5UploadNuGetClI</Title>
+      <Author>[USERNAME]</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>dotnet5UploadNuGetClI</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="csharp" Delimiter="$"><![CDATA[dotnet nuget push NETStandardLib.1.0.0.nupkg -k e04cbf5b-d5f3-4881-ac2d-0e002b67d879 -s https://www.myget.org/F/netcorepublic/api/v2/package
+
+dotnet nuget push NETStandardLib.1.0.0.symbols.nupkg -k e04cbf5b-d5f3-4881-ac2d-0e002b67d879 -s https://www.myget.org/F/netcorepublic/symbols/api/v2/package
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

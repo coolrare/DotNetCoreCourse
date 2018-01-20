@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>dotnet1SAPClass</Title>
+      <Author>[USERNAME]</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>dotnet1SAPClass</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="csharp" Delimiter="$"><![CDATA[    public class SayHello
+    {
+        public static string Hello()
+        {
+#if WINDOWS_UWP
+            return "Hello UWP";
+#elif NETCOREAPP2_0
+            return "Hello .NET Core 2.0";
+#elif __ANDROID__
+            return "Hello Android";
+#elif __IOS__
+            return "Hello iOS";
+#else
+        return "Hello .NET Framework";
+#endif
+        }
+    }
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

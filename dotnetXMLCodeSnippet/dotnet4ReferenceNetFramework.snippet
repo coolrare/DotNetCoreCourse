@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>dotnet4ReferenceNetFramework</Title>
+      <Author>[USERNAME]</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>dotnet4ReferenceNetFramework</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="xml" Delimiter="$"><![CDATA[  <ItemGroup Condition="'$(TargetFramework)' == 'net40'">
+    <Reference Include="System.Net" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net45'">
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Threading.Tasks" />
+  </ItemGroup>
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

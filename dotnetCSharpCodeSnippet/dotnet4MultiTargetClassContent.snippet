@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>dotnet4MultiTargetClassContent</Title>
+      <Author>[USERNAME]</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>dotnet4MultiTargetClassContent</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="csharp" Delimiter="$"><![CDATA[    public class MultitargetLib
+    {
+#if NET40
+        private readonly WebClient _client = new WebClient();
+        private readonly object _locker = new object();
+#else
+        private readonly HttpClient _client = new HttpClient();
+#endif
+
+#if NET40
+        // .NET Framework 4.0 並沒有支援 async/await 用法
+        public string GetDotNetCount(string url)
+        {
+            var uri = new Uri(url);
+
+            string result = "";
+
+            // 避免多執行緒同時呼叫這個方法，因此，要修正這個方法具有執行緒安全的特性 
+            lock (_locker)
+            {
+                result = _client.DownloadString(uri);
+            }
+
+            int dotNetCount = Regex.Matches(result, ".NET").Count;
+
+            Console.WriteLine("這裡執行的方法是 GetDotNetCount");
+            return $"在這裡提到 .NET 共有 {dotNetCount} 次!";
+        }
+#else
+        // .NET 4.5+ 就有支援非同步程式設計 async/await!
+        public async Task<string> GetDotNetCountAsync(string url)
+        {
+            // HttpClient 是執行緒安全的，因此，不需要特別做 lock
+            var result = await _client.GetStringAsync(url);
+
+            int dotNetCount = Regex.Matches(result, ".NET").Count;
+
+            Console.WriteLine("這裡執行的方法是 GetDotNetCountAsync");
+            return $"在這裡提到 .NET 共有 {dotNetCount} 次!";
+        }
+#endif
+    }
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>dotnet4MultiTargetClassWebUsing</Title>
+      <Author>[USERNAME]</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>dotnet4MultiTargetClassWebUsing</Shortcut>
+    </Header>
+    <Snippet>
+      <Code Language="csharp" Delimiter="$"><![CDATA[#if NET40
+// This only compiles for the .NET Framework 4 targets
+using System.Net;
+#else
+// This compiles for all other targets
+using System.Net.Http;
+using System.Threading.Tasks;
+#endif
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
