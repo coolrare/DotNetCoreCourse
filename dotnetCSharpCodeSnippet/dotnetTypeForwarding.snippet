@@ -5,22 +5,16 @@
       <SnippetTypes>
         <SnippetType>Expansion</SnippetType>
       </SnippetTypes>
-      <Title>dotnetVS2017ProgramMain</Title>
+      <Title>dotnetTypeForwarding</Title>
       <Author>[USERNAME]</Author>
       <Description>
       </Description>
       <HelpUrl>
       </HelpUrl>
-      <Shortcut>dotnetVS2017ProgramMain</Shortcut>
+      <Shortcut>dotnetTypeForwarding</Shortcut>
     </Header>
     <Snippet>
-      <Code Language="csharp" Delimiter="@"><![CDATA[            Console.WriteLine("Hello .NET Core");
-            MyLibrary.MyClass foo = new MyLibrary.MyClass();
-            Console.WriteLine($"2 + 3 = {foo.Sum(2, 3)}");
-
-            Console.WriteLine("Press any key for continuing...");
-            Console.ReadKey();
-]]></Code>
+      <Code Language="csharp" Delimiter="$"><![CDATA[[assembly: TypeForwardedTo(typeof(MyAssembly.SayHello))]]]></Code>
     </Snippet>
   </CodeSnippet>
 </CodeSnippets>

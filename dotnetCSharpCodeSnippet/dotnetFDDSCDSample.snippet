@@ -16,11 +16,12 @@
     <Snippet>
       <Code Language="csharp" Delimiter="@"><![CDATA[        public static void OutputFileSystemInfo()
         {
+            Console.WriteLine($"正在執行作業系統的資訊");
             Console.WriteLine($"OS:                        {RuntimeInformation.OSDescription}");
             Console.WriteLine($"Framework:                 {RuntimeInformation.FrameworkDescription}");
             Console.WriteLine($"OS Architecture            {RuntimeInformation.OSArchitecture}");
             Console.WriteLine($"Process Architecture       {RuntimeInformation.ProcessArchitecture}");
-            Console.WriteLine("");
+            Console.WriteLine($"{Environment.NewLine}正在執行作業系統的檔案系統相關資訊");
             Console.WriteLine($"Path.PathSeparator:              {Path.PathSeparator}");
             Console.WriteLine($"Path.DirectorySeparatorChar:     {Path.DirectorySeparatorChar}");
             Console.WriteLine($"Directory.GetCurrentDirectory(): {Directory.GetCurrentDirectory()}");
@@ -36,27 +37,34 @@
 
         public static void WorkWithFiles()
         {
-            // define a custom directory path 
+            Console.WriteLine($"{Environment.NewLine}{Environment.NewLine}目錄與檔案的操作");
+
+            // 定義要存取的自訂路徑 
             string userFolder = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 
             var customFolder = new string[]
                 { userFolder, "MiniASP", "NETCore", "OutputFiles" };
 
+            // 善用 Path.Combine 產生跨作業系統平台的路徑分隔字元
             string dir = Path.Combine(customFolder);
+            Console.WriteLine($"{Environment.NewLine}產生目錄");
+            Console.WriteLine($"Directory Path: {dir}");
             Directory.CreateDirectory(dir);
 
-            // define file paths
+            // 定義要處理檔案的完整工作路徑
             string textFile = Path.Combine(dir, "Dummy.txt");
             string backupFile = Path.Combine(dir, "Dummy.bak");
 
-            Console.WriteLine($"Working with: {textFile}");
-
-            // check if a file exists 
+            // 檢查檔案是否存在 
+            Console.WriteLine($"{Environment.NewLine}檢查檔案是否存在");
+            Console.WriteLine($"檔案名稱: {textFile}");
             Console.WriteLine($"Does it exist? {File.Exists(textFile)}  ");
             Console.WriteLine("Press any key for continuing...");
             Console.ReadKey();
 
-            // create a new text file and write a line to it 
+            // 產生新的檔案與寫入內容
+            Console.WriteLine($"{Environment.NewLine}產生新的檔案與寫入內容");
+            Console.WriteLine($"檔案名稱: {textFile}");
             StreamWriter textWriter = File.CreateText(textFile);
             textWriter.WriteLine("Hello, C#!");
             textWriter.Close(); // close file and release resources
@@ -65,7 +73,10 @@
             Console.WriteLine("Press any key for continuing...");
             Console.ReadKey();
 
-            // copy a file and overwrite if it already exists 
+            // 複製檔案 
+            Console.WriteLine($"{Environment.NewLine}複製檔案");
+            Console.WriteLine($"來源檔案名稱: {textFile}");
+            Console.WriteLine($"目的檔案名稱: {backupFile}");
             File.Copy(
                 sourceFileName: textFile,
                 destFileName: backupFile,
@@ -74,17 +85,20 @@
             Console.WriteLine($"Does {backupFile} exist? {File.Exists(backupFile)}");
 
             Console.WriteLine("Confirm the files exist, and then press ENTER: ");
-            Console.ReadLine();
+            Console.ReadKey();
 
-            // delete a file 
+            // 刪除檔案 
+            Console.WriteLine($"{Environment.NewLine}刪除檔案");
+            Console.WriteLine($"檔案名稱: {textFile}");
             File.Delete(textFile);
 
             Console.WriteLine($"Does {textFile}  exist? {File.Exists(textFile)}");
             Console.WriteLine("Press any key for continuing...");
             Console.ReadKey();
 
-            // read from a text file 
-            Console.WriteLine($"Reading contents of {backupFile}:");
+            // 讀取檔案內容
+            Console.WriteLine($"{Environment.NewLine}讀取檔案內容");
+            Console.WriteLine($"檔案名稱: {backupFile}");
             StreamReader textReader = File.OpenText(backupFile);
             Console.WriteLine(textReader.ReadToEnd());
             textReader.Close();
